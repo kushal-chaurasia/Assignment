@@ -47,3 +47,24 @@ class CheckoutKata:
             else:
                 total_price += quantity * self.pricing_rules[item]
         return total_price
+
+
+if __name__ == "__main__":
+    pricing_rules = {
+        "A": SpecialPrice(special_price_quantity=3, special_price=130, normal_price=50),
+        "B": SpecialPrice(special_price_quantity=2, special_price=45, normal_price=30),
+        "C": IndividualPrice(price=20),
+        "D": IndividualPrice(price=15)
+    }
+
+    co = CheckoutKata(pricing_rules, {})
+    co.scan("A")
+    co.scan("A")
+    co.scan("A")
+    co.scan("A")
+    co.scan("B")
+    co.scan("B")
+    co.scan("B")
+    co.scan("C")
+    co.scan("D")
+    print(co.calculate_total()) 
